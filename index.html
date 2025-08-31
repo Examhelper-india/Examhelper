@@ -1,89 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ExamHelper — Bihar Ka Itihas & Quick MCQs</title>
-  <meta name="description" content="ExamHelper: Bihar ka itihaas, quick notes & MCQ practise for competitive exams." />
+  <meta charset="UTF-8">
+  <title>इतिहास सहायक</title>
   <style>
-    :root{--accent:#6a5acd;--muted:#9aa2b2;background:#071022;color:#eef2ff}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#071022,#07132a);color:var(--accent)}
-    .wrap{max-width:960px;margin:28px auto;padding:18px}
-    header{display:flex;gap:14px;align-items:center}
-    .logo{width:56px;height:56px;background:linear-gradient(135deg,#7c3aed,#06b6d4);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    h1{margin:0;color:#f8fafc}
-    p.sub{margin:6px 0 0;color:var(--muted)}
-    .search{margin-top:16px;display:flex;gap:8px}
-    .search input{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#eef2ff}
-    .btn{background:var(--accent);color:white;border:0;padding:10px 12px;border-radius:8px;cursor:pointer}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
-    .card{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);color:#e6eef8}
-    .card img{width:100%;border-radius:8px;margin-top:10px}
-    footer{text-align:center;margin-top:26px;color:var(--muted);font-size:13px}
-    @media(max-width:520px){.logo{width:48px;height:48px}}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      background: #f4f4f4;
+    }
+    /* Sidebar */
+    #menu {
+      width: 260px;
+      background: #2c3e50;
+      color: white;
+      height: 100vh;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    #menu h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #menu ul {
+      list-style: none;
+      padding: 0;
+    }
+    #menu ul li {
+      margin: 8px 0;
+    }
+    #menu ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 8px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    #menu ul li a:hover {
+      background: #34495e;
+    }
+    /* Content */
+    #content {
+      flex: 1;
+      padding: 20px;
+      background: white;
+      overflow-y: auto;
+    }
+    #content h1 {
+      color: #2c3e50;
+    }
   </style>
+  <script>
+    function showContent(topic) {
+      let content = {
+        "maurya": `<h1>मौर्य काल</h1>
+          <p>मौर्य साम्राज्य की स्थापना <b>चंद्रगुप्त मौर्य</b> ने 321 ई.पू. में की।</p>
+          <ul>
+            <li>चंद्रगुप्त मौर्य (स्थापक)</li>
+            <li>बिंदुसार</li>
+            <li>अशोक (कलिंग युद्ध के बाद बौद्ध धर्म स्वीकार)</li>
+          </ul>`,
+
+        "gupta": `<h1>गुप्त काल</h1>
+          <p>गुप्त साम्राज्य (319 ई.) को भारत का <b>स्वर्ण युग</b> कहा जाता है।</p>
+          <ul>
+            <li>सम्राट चंद्रगुप्त प्रथम</li>
+            <li>समुद्रगुप्त (भारत का नेपोलियन)</li>
+            <li>चंद्रगुप्त द्वितीय (विक्रमादित्य)</li>
+          </ul>`,
+
+        "mughal": `<h1>मुगल काल</h1>
+          <p>मुगल साम्राज्य की नींव <b>बाबर</b> ने 1526 में पानीपत की पहली लड़ाई में डाली।</p>
+          <ul>
+            <li>अकबर – धार्मिक सहिष्णुता, दीन-ए-इलाही</li>
+            <li>जहाँगीर – नूरजहाँ का प्रभाव</li>
+            <li>शाहजहाँ – ताजमहल का निर्माण</li>
+            <li>औरंगज़ेब – दक्षिण भारत विस्तार</li>
+          </ul>`,
+
+        "buddhism": `<h1>बौद्ध धर्म</h1>
+          <p>बौद्ध धर्म के संस्थापक <b>गौतम बुद्ध</b> थे।</p>
+          <ul>
+            <li>जन्म – लुंबिनी (563 ई.पू.)</li>
+            <li>ज्ञान प्राप्त – बोधगया</li>
+            <li>प्रथम उपदेश – सारनाथ</li>
+            <li>मृत्यु – कुशीनगर</li>
+          </ul>`,
+
+        "jainism": `<h1>जैन धर्म</h1>
+          <p>जैन धर्म के 24वें तीर्थंकर <b>महावीर स्वामी</b> थे।</p>
+          <ul>
+            <li>जन्म – वैशाली (599 ई.पू.)</li>
+            <li>सिद्धांत – अहिंसा, अपरिग्रह, सत्य</li>
+            <li>निर्वाण – पावापुरी (527 ई.पू.)</li>
+          </ul>`
+      };
+      document.getElementById("content").innerHTML = content[topic] || "<h1>सूचना उपलब्ध नहीं</h1>";
+    }
+  </script>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">EH</div>
-      <div>
-        <h1>ExamHelper</h1>
-        <p class="sub">Bihar ka Itihas • Quick MCQs • Notes (Free)</p>
-      </div>
-    </header>
 
-    <div class="search">
-      <input id="q" placeholder="Search topics, e.g., Bihar history, CSAT, Geography" />
-      <button id="go" class="btn">Search</button>
-    </div>
-
-    <div class="grid" id="cards">
-      <div class="card">
-        <h3>बिहार का इतिहास — संक्षेप</h3>
-        <p>Prehistoric से आधुनिक काल तक — पढ़ने के लिए नीचे स्क्रोल करें।</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Mahabodhi_Temple_-_Bodh_Gaya.jpg" alt="Bodh Gaya">
-      </div>
-
-      <div class="card">
-        <h3>प्रागैतिहासिक और प्राचीन काल</h3>
-        <ul style="color:#dbeafe">
-          <li>गंगा मैदानों में पुरापाषाण प्रमाण</li>
-          <li>चिरंद — नवपाषाण कृषि</li>
-          <li>मगध, अंग, मिथिला का उदय</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>मौर्य काल</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Sher_Shah_Suri_Tomb.jpg" alt="Sher Shah Suri Tomb">
-        <p style="color:var(--muted)">चंद्रगुप्त मौर्य, अशोक और पाटलिपुत्र जैसे महत्वपूर्ण तथ्य।</p>
-      </div>
-
-      <div class="card">
-        <h3>गुप्त और बाद का काल</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Nalanda_University_India_ruines.jpg/800px-Nalanda_University_India_ruines.jpg" alt="Nalanda">
-        <p style="color:var(--muted)">नालंदा, विक्रमशिला और स्वर्ण युग के नोट्स।</p>
-      </div>
-
-      <div class="card">
-        <h3>Useful tips</h3>
-        <p class="sub">Daily: 1 topic — 20 मिनट पढ़ो — 10 प्रश्न हल करो।</p>
-      </div>
-    </div>
-
-    <footer>
-      Built with ❤ — Upload this file as <strong>index.html</strong> in repo root and enable Pages.
-    </footer>
+  <!-- Sidebar -->
+  <div id="menu">
+    <h2>इतिहास विषय</h2>
+    <ul>
+      <li><a href="#" onclick="showContent('maurya')">मौर्य काल</a></li>
+      <li><a href="#" onclick="showContent('gupta')">गुप्त काल</a></li>
+      <li><a href="#" onclick="showContent('mughal')">मुगल काल</a></li>
+      <li><a href="#" onclick="showContent('buddhism')">बौद्ध धर्म</a></li>
+      <li><a href="#" onclick="showContent('jainism')">जैन धर्म</a></li>
+    </ul>
   </div>
 
-  <script>
-    // Small helper: open search terms inside the page (simple demo)
-    document.getElementById('go').onclick = ()=>{
-      const q = document.getElementById('q').value.trim().toLowerCase();
-      if(!q){ alert('Search term dal!'); return; }
-      alert('Search demo: "'+q+'". Content is static—add dynamic search later.');
-    };
-  </script>
+  <!-- Content -->
+  <div id="content">
+    <h1>स्वागत है</h1>
+    <p>बायीं ओर से कोई भी विषय चुनें और उसकी जानकारी यहाँ पढ़ें।</p>
+  </div>
+
 </body>
 </html>
