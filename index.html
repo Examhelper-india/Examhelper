@@ -2,124 +2,187 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <title>इतिहास सहायक</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>इतिहास अध्ययन पोर्टल</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
+      font-family: Arial, sans-serif;
       display: flex;
-      background: #f4f4f4;
     }
     /* Sidebar */
-    #menu {
-      width: 260px;
+    .sidebar {
+      width: 250px;
       background: #2c3e50;
       color: white;
       height: 100vh;
       padding: 20px;
-      overflow-y: auto;
+      box-sizing: border-box;
+      position: fixed;
     }
-    #menu h2 {
+    .sidebar h2 {
       text-align: center;
       margin-bottom: 20px;
     }
-    #menu ul {
+    .sidebar ul {
       list-style: none;
       padding: 0;
     }
-    #menu ul li {
-      margin: 8px 0;
-    }
-    #menu ul li a {
-      color: white;
-      text-decoration: none;
-      display: block;
+    .sidebar ul li {
+      margin: 15px 0;
+      cursor: pointer;
       padding: 8px;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-    #menu ul li a:hover {
       background: #34495e;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .sidebar ul li:hover {
+      background: #1abc9c;
     }
     /* Content */
-    #content {
-      flex: 1;
+    .content {
+      margin-left: 270px;
       padding: 20px;
-      background: white;
-      overflow-y: auto;
+      flex-grow: 1;
     }
-    #content h1 {
-      color: #2c3e50;
+    .topic {
+      display: none;
+    }
+    .topic.active {
+      display: block;
+    }
+    img {
+      max-width: 100%;
+      margin: 10px 0;
+      border-radius: 8px;
     }
   </style>
   <script>
-    function showContent(topic) {
-      let content = {
-        "maurya": `<h1>मौर्य काल</h1>
-          <p>मौर्य साम्राज्य की स्थापना <b>चंद्रगुप्त मौर्य</b> ने 321 ई.पू. में की।</p>
-          <ul>
-            <li>चंद्रगुप्त मौर्य (स्थापक)</li>
-            <li>बिंदुसार</li>
-            <li>अशोक (कलिंग युद्ध के बाद बौद्ध धर्म स्वीकार)</li>
-          </ul>`,
-
-        "gupta": `<h1>गुप्त काल</h1>
-          <p>गुप्त साम्राज्य (319 ई.) को भारत का <b>स्वर्ण युग</b> कहा जाता है।</p>
-          <ul>
-            <li>सम्राट चंद्रगुप्त प्रथम</li>
-            <li>समुद्रगुप्त (भारत का नेपोलियन)</li>
-            <li>चंद्रगुप्त द्वितीय (विक्रमादित्य)</li>
-          </ul>`,
-
-        "mughal": `<h1>मुगल काल</h1>
-          <p>मुगल साम्राज्य की नींव <b>बाबर</b> ने 1526 में पानीपत की पहली लड़ाई में डाली।</p>
-          <ul>
-            <li>अकबर – धार्मिक सहिष्णुता, दीन-ए-इलाही</li>
-            <li>जहाँगीर – नूरजहाँ का प्रभाव</li>
-            <li>शाहजहाँ – ताजमहल का निर्माण</li>
-            <li>औरंगज़ेब – दक्षिण भारत विस्तार</li>
-          </ul>`,
-
-        "buddhism": `<h1>बौद्ध धर्म</h1>
-          <p>बौद्ध धर्म के संस्थापक <b>गौतम बुद्ध</b> थे।</p>
-          <ul>
-            <li>जन्म – लुंबिनी (563 ई.पू.)</li>
-            <li>ज्ञान प्राप्त – बोधगया</li>
-            <li>प्रथम उपदेश – सारनाथ</li>
-            <li>मृत्यु – कुशीनगर</li>
-          </ul>`,
-
-        "jainism": `<h1>जैन धर्म</h1>
-          <p>जैन धर्म के 24वें तीर्थंकर <b>महावीर स्वामी</b> थे।</p>
-          <ul>
-            <li>जन्म – वैशाली (599 ई.पू.)</li>
-            <li>सिद्धांत – अहिंसा, अपरिग्रह, सत्य</li>
-            <li>निर्वाण – पावापुरी (527 ई.पू.)</li>
-          </ul>`
-      };
-      document.getElementById("content").innerHTML = content[topic] || "<h1>सूचना उपलब्ध नहीं</h1>";
+    function showTopic(id) {
+      let topics = document.querySelectorAll('.topic');
+      topics.forEach(t => t.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
   </script>
 </head>
 <body>
-
   <!-- Sidebar -->
-  <div id="menu">
+  <div class="sidebar">
     <h2>इतिहास विषय</h2>
     <ul>
-      <li><a href="#" onclick="showContent('maurya')">मौर्य काल</a></li>
-      <li><a href="#" onclick="showContent('gupta')">गुप्त काल</a></li>
-      <li><a href="#" onclick="showContent('mughal')">मुगल काल</a></li>
-      <li><a href="#" onclick="showContent('buddhism')">बौद्ध धर्म</a></li>
-      <li><a href="#" onclick="showContent('jainism')">जैन धर्म</a></li>
+      <li onclick="showTopic('maurya')">मौर्य काल</li>
+      <li onclick="showTopic('mughal')">मुगल काल</li>
+      <li onclick="showTopic('jain')">जैन धर्म</li>
+      <li onclick="showTopic('buddh')">बौद्ध धर्म</li>
+      <li onclick="showTopic('gupta')">गुप्त काल</li>
+      <li onclick="showTopic('sangam')">संगम साहित्य</li>
+      <li onclick="showTopic('delhi')">दिल्ली सल्तनत</li>
     </ul>
   </div>
 
   <!-- Content -->
-  <div id="content">
-    <h1>स्वागत है</h1>
-    <p>बायीं ओर से कोई भी विषय चुनें और उसकी जानकारी यहाँ पढ़ें।</p>
-  </div>
+  <div class="content">
+    <h1>इतिहास अध्ययन पोर्टल</h1>
+    <p>बाएँ तरफ दिए गए विषय पर क्लिक करें और पूरा विवरण देखें।</p>
 
+    <!-- मौर्य काल -->
+    <div class="topic active" id="maurya">
+      <h2>मौर्य काल (321 ईसा पूर्व - 185 ईसा पूर्व)</h2>
+      <p>
+        मौर्य साम्राज्य की स्थापना चंद्रगुप्त मौर्य ने चाणक्य की सहायता से की। 
+        यह भारतीय इतिहास का पहला सबसे बड़ा और संगठित साम्राज्य था। 
+        मौर्य प्रशासन में केंद्रीकृत शासन था और अर्थशास्त्र (कौटिल्य का ग्रंथ) इसी समय लिखा गया। 
+      </p>
+      <p>
+        अशोक महान ने बौद्ध धर्म अपनाकर पूरे एशिया में शांति और अहिंसा का संदेश फैलाया। 
+        अशोक के शिलालेख और अभिलेख आज भी महत्वपूर्ण स्रोत हैं।
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Ashoka_Lion_Capital.jpg/330px-Ashoka_Lion_Capital.jpg" alt="अशोक स्तंभ">
+    </div>
+
+    <!-- मुगल काल -->
+    <div class="topic" id="mughal">
+      <h2>मुगल काल (1526 - 1857)</h2>
+      <p>
+        मुगल साम्राज्य की स्थापना बाबर ने 1526 में पानीपत की पहली लड़ाई में इब्राहीम लोदी को हराकर की। 
+        अकबर महान ने धार्मिक सहिष्णुता, प्रशासनिक सुधार और कला-संस्कृति को बढ़ावा दिया। 
+      </p>
+      <p>
+        शाहजहाँ ने ताजमहल बनवाया जो विश्व धरोहर में शामिल है। 
+        औरंगजेब के शासनकाल में साम्राज्य चरम पर पहुँचा लेकिन धीरे-धीरे कमजोर हो गया।
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Taj-Mahal.jpg/330px-Taj-Mahal.jpg" alt="ताजमहल">
+    </div>
+
+    <!-- जैन धर्म -->
+    <div class="topic" id="jain">
+      <h2>जैन धर्म</h2>
+      <p>
+        जैन धर्म की स्थापना महावीर (वर्धमान) ने 6वीं शताब्दी ईसा पूर्व में की। 
+        इसका मुख्य सिद्धांत अहिंसा, सत्य और अपरिग्रह है। 
+      </p>
+      <p>
+        जैन धर्म के अनुयायी तपस्या, आत्मसंयम और मोक्ष की प्राप्ति पर ध्यान केंद्रित करते हैं। 
+        जैन मंदिर अपनी कलात्मक स्थापत्य के लिए प्रसिद्ध हैं।
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Gomateshwara_Bahubali.jpg/330px-Gomateshwara_Bahubali.jpg" alt="जैन मूर्ति">
+    </div>
+
+    <!-- बौद्ध धर्म -->
+    <div class="topic" id="buddh">
+      <h2>बौद्ध धर्म</h2>
+      <p>
+        बौद्ध धर्म की स्थापना गौतम बुद्ध ने 6वीं शताब्दी ईसा पूर्व में की। 
+        उनका पहला उपदेश सारनाथ में दिया गया जिसे 'धर्मचक्र प्रवर्तन' कहते हैं। 
+      </p>
+      <p>
+        बौद्ध धर्म एशिया के विभिन्न देशों में फैला और इसका प्रभाव कला, स्थापत्य और साहित्य पर पड़ा। 
+        प्रमुख सिद्धांत हैं – मध्यम मार्ग, चार आर्य सत्य और अष्टांगिक मार्ग।
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Great_Buddha_Dordenma.jpg/330px-Great_Buddha_Dordenma.jpg" alt="बुद्ध प्रतिमा">
+    </div>
+
+    <!-- गुप्त काल -->
+    <div class="topic" id="gupta">
+      <h2>गुप्त काल (320 ईस्वी - 550 ईस्वी)</h2>
+      <p>
+        गुप्त साम्राज्य को भारत का 'स्वर्ण युग' कहा जाता है। 
+        चंद्रगुप्त प्रथम ने इसकी नींव रखी और समुद्रगुप्त ने साम्राज्य का विस्तार किया। 
+      </p>
+      <p>
+        कला, साहित्य और विज्ञान के क्षेत्र में इस समय अभूतपूर्व विकास हुआ। 
+        कालिदास, आर्यभट्ट और वराहमिहिर जैसे महान विद्वान इसी काल में हुए।
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gupta_Empire_map.png/330px-Gupta_Empire_map.png" alt="गुप्त साम्राज्य का मानचित्र">
+    </div>
+
+    <!-- संगम साहित्य -->
+    <div class="topic" id="sangam">
+      <h2>संगम साहित्य</h2>
+      <p>
+        संगम साहित्य दक्षिण भारत (तमिलनाडु) की प्राचीनतम काव्य परंपरा है। 
+        इसका विकास लगभग 500 ईसा पूर्व से 300 ईस्वी तक हुआ। 
+      </p>
+      <p>
+        इसमें समाज, राजनीति, युद्ध, प्रेम और प्रकृति का सुंदर चित्रण मिलता है। 
+        संगम साहित्य तमिल भाषा की अमूल्य धरोहर है।
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Tamil_Sangam_Literature.jpg/330px-Tamil_Sangam_Literature.jpg" alt="संगम साहित्य">
+    </div>
+
+    <!-- दिल्ली सल्तनत -->
+    <div class="topic" id="delhi">
+      <h2>दिल्ली सल्तनत (1206 - 1526)</h2>
+      <p>
+        दिल्ली सल्तनत की स्थापना कुतुबुद्दीन ऐबक ने की। 
+        यह पाँच वंशों में बंटी: ममलूक, खिलजी, तुगलक, सैय्यद और लोधी। 
+      </p>
+      <p>
+        इस काल में भारत में इस्लामी स्थापत्य, प्रशासन और संस्कृति का विकास हुआ। 
+        अलाउद्दीन खिलजी और मुहम्मद बिन तुगलक प्रमुख शासक थे।
+      </p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Qutub_Minar_2011.jpg/330px-Qutub_Minar_2011.jpg" alt="कुतुब मीनार">
+    </div>
+  </div>
 </body>
 </html>
