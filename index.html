@@ -1,348 +1,275 @@
-<!DOCTYPE html>
-<html lang="hi">
+<!doctype html>
+
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ExamHelper – Bihar & Freedom Leaders</title>
-  <meta name="description" content="ExamHelper: Full notes — Maurya, Jainism, Buddhism, Mughal, Gandhi, Ambedkar, Bose. Single page detailed notes with images." />
-  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ExamHelper — Quick MCQ Practice & Notes</title>
+  <meta name="description" content="ExamHelper: free MCQ practice, previous year papers, quick notes & tips for competitive exams. Lightweight, mobile-first, and easy to edit." />
+  <meta name="author" content="Your Name" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="ExamHelper — Quick MCQ Practice & Notes" />
+  <meta property="og:description" content="Practice MCQs, download notes & previous papers, track progress. A simple exam-prep web app." />
+  <meta property="og:type" content="website" />  <!-- Structured data (basic) -->  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ExamHelper",
+    "url": "https://example.github.io/exam-helper/",
+    "description": "Lightweight exam helper with MCQ practice and downloadable notes."
+  }
+  </script>  <style>
     :root{
-      --bg:#0f1324;--text:#eef1ff;--muted:#9aa4c7;--accent:#8b5cf6;--card:#0f1a3a;--ok:#22c55e;
+      --accent:#5b21b6; /* purple */
+      --muted:#6b7280;
+      --bg:#0f172a;
+      --card:#0b1220;
+      color-scheme: dark;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,#050612,#091029);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif}
-    a{color:#93c5fd}
-    .wrap{max-width:1200px;margin:auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#4f46e5);display:grid;place-items:center;box-shadow:0 8px 22px rgba(75,0,130,.35)}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071022 0%, #07132a 100%);color:#e6eef8}
+    .container{max-width:1000px;margin:24px auto;padding:16px}
+    header{display:flex;align-items:center;gap:12px}
+    /* Inline SVG logo sizing */
+    #logo{width:54px;height:54px}
     h1{font-size:20px;margin:0}
-    .search{flex:1;display:flex;gap:8px}
-    .search input{flex:1;padding:10px;border-radius:10px;border:1px solid #26315c;background:#07102a;color:var(--text);outline:none}
-    .search button{background:var(--accent);border:0;padding:10px 12px;border-radius:10px;color:white;cursor:pointer;font-weight:700}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-    .chip{background:#0b1836;padding:6px 10px;border-radius:999px;border:1px solid #26325a;color:var(--muted);font-size:13px}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    @media(max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.grid{grid-template-columns:1fr}}
-    .card{background:linear-gradient(180deg,#07102a,#07122f);border:1px solid #253159;padding:14px;border-radius:14px;display:flex;flex-direction:column;gap:10px;min-height:170px}
-    .card img{width:100%;height:120px;object-fit:cover;border-radius:10px;border:1px solid #23325a}
-    .card h3{margin:0 0 4px;color:#c7d2fe;font-size:16px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-    .card button{margin-top:auto;background:#0e1b3c;border:1px solid #31457a;color:#dbe9ff;padding:8px 10px;border-radius:10px;cursor:pointer}
-    .hero{background:linear-gradient(90deg,#07102a,#07152f);border:1px solid #26325a;border-radius:12px;padding:12px;display:flex;gap:12px;align-items:center;margin-bottom:14px}
-    .hero img{width:110px;height:80px;object-fit:cover;border-radius:10px;border:1px solid #23325a}
-    footer{margin-top:22px;color:#9fb0e6;font-size:13px;text-align:center}
-    /* PANEL */
-    .panel{position:fixed;inset:0;background:rgba(4,6,18,.78);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
-    .panel.open{display:flex}
-    .sheet{width:min(100%,1024px);max-height:92vh;overflow:auto;background:linear-gradient(180deg,#05102a,#07102a);border-radius:14px;padding:18px;border:1px solid #2b3965}
-    .sheet header{display:flex;align-items:center;justify-content:space-between;gap:8px;position:sticky;top:0;background:linear-gradient(180deg,#05102a,#07102a);padding-bottom:6px;margin-bottom:8px}
-    .close{background:#162a58;border:1px solid #2f4a8a;padding:8px 10px;border-radius:10px;color:#dbe9ff;cursor:pointer}
-    .content h2{margin:6px 0 10px}
-    .content h3{color:#c7d2fe;margin-top:16px}
-    .img-wrap{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
-    .img-wrap img{width:300px;max-width:100%;border-radius:10px;border:1px solid #23325a}
-    .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    @media(max-width:680px){.facts{grid-template-columns:1fr}}
-    .hr{height:1px;background:linear-gradient(90deg,transparent,#2b3a72,transparent);margin:16px 0}
-    .tag{display:inline-block;background:#0b1735;border-radius:999px;padding:4px 8px;border:1px solid #26325a;color:#cfe0ff;margin-right:6px}
-    .small{font-size:13px;color:#a9baf2}
-  </style>
-</head>
+    .tag{color:var(--muted);font-size:13px}
+
+    .hero{display:flex;gap:20px;align-items:center;margin-top:18px}
+    .cta{background:linear-gradient(90deg,var(--accent),#0ea5b9);border:none;padding:10px 14px;border-radius:10px;color:white;font-weight:600}
+    .search{flex:1}
+    .search input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:inherit}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card h3{margin:0 0 8px 0}
+    .topic{display:flex;align-items:center;gap:10px}
+    .chip{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:12px}
+
+    /* MCQ area */
+    .mcq{margin-top:18px}
+    .question{font-weight:600;margin-bottom:10px}
+    .options{display:flex;flex-direction:column;gap:10px}
+    .opt{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+    .opt.correct{border-color:rgba(34,197,94,0.7);background:linear-gradient(90deg, rgba(34,197,94,0.08), transparent)}
+    .opt.wrong{border-color:rgba(239,68,68,0.7);background:linear-gradient(90deg, rgba(239,68,68,0.06), transparent)}
+    .controls{display:flex;gap:8px;margin-top:12px}
+    .btn{padding:8px 12px;border-radius:8px;border:0;background:rgba(255,255,255,0.04);color:inherit}
+
+    footer{margin-top:30px;padding:20px;text-align:center;color:var(--muted);font-size:13px}
+
+    @media (max-width:520px){h1{font-size:18px}.hero{flex-direction:column;align-items:flex-start}}
+  </style></head>
 <body>
-  <div class="wrap">
+  <div class="container">
     <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 8.7l5.4-.8L12 3z" fill="#fff"/></svg>
-        </div>
-        <div>
-          <h1>ExamHelper — Full Notes (Bihar & Leaders)</h1>
-          <div class="small">Detailed single page notes • Click any card → read full notes</div>
-        </div>
-      </div>
-
-      <div class="search">
-        <input id="q" placeholder="Search topics (e.g., Gandhi, Maurya, Mughal)"/>
-        <button onclick="doSearch()">Search</button>
-      </div>
-    </header>
-
-    <div class="hero">
-      <img src="https://picsum.photos/seed/nalanda/640/360" alt="hero"/>
+      <!-- SVG logo (simple book + lightning) -->
+      <svg id="logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="2" y="8" width="60" height="48" rx="4" fill="#0f172a" stroke="#ffffff22"/>
+        <path d="M12 16h30v3H12z" fill="#e6eef8" opacity="0.06"/>
+        <path d="M22 22h18v2H22z" fill="#e6eef8" opacity="0.06"/>
+        <path d="M36 18l-4 8h6l-2 12 8-10h-6z" fill="#ffe4b5"/>
+        <path d="M20 46h22v2H20z" fill="#ffffff10"/>
+      </svg>
       <div>
-        <div style="font-weight:700">Study smart — single page full notes</div>
-        <div class="small">Click any card to open long-form notes with images and exam pointers.</div>
-        <div class="chips" style="margin-top:8px">
-          <span class="chip">#History</span><span class="chip">#FreedomLeaders</span><span class="chip">#Bihar</span><span class="chip">#ExamPrep</span>
-        </div>
+        <h1>ExamHelper</h1>
+        <div class="tag">Free MCQs • Quick notes • Track progress</div>
       </div>
-    </div>
+    </header><section class="hero">
+  <div class="search">
+    <input id="search" placeholder="Search topics (ex: Geography, CSAT, History)" />
+  </div>
+  <div>
+    <button id="startPractice" class="cta">Start Practice</button>
+  </div>
+</section>
 
-    <!-- grid of cards generated from data -->
-    <div class="grid" id="cards"></div>
-
-    <footer id="footer">
-      Built with ❤ — <strong>Wasif Qamar</strong> • Keep adding topics in JS (TOPICS array) to expand.
-    </footer>
+<div class="grid">
+  <div class="card">
+    <h3>Popular Topics</h3>
+    <div class="topic" id="topicsList"></div>
   </div>
 
-  <!-- panel -->
-  <div class="panel" id="panel" aria-hidden="true">
-    <div class="sheet" role="dialog" aria-modal="true">
-      <header>
-        <div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#8b5cf6,#4f46e5)"></div>
-            <div>
-              <h2 id="title" style="margin:0"></h2>
-              <div class="small" id="subtitle"></div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <button class="close" onclick="closePanel()">Close ✕</button>
-        </div>
-      </header>
-
-      <div class="content" id="content"></div>
-    </div>
+  <div class="card">
+    <h3>Quick Notes</h3>
+    <p class="tag">Short downloadable notes & links for quick revision.</p>
+    <ul id="notesList"></ul>
   </div>
 
-  <script>
-    // ---------- TOPICS (add/modify here) ----------
-    // Using picsum.photos seeded URLs for AI-like images (no Wikipedia hotlink)
-    const TOPICS = [
-      // existing history topics
-      {
-        id:"maurya",
-        title:"मौर्य काल (Maurya Empire)",
-        blurb:"चंद्रगुप्त→अशोक — शासन, अर्थव्यवस्था, धर्म और विरासत (पूरा नोट).",
-        cover:"https://picsum.photos/seed/maurya/800/450",
-        html:`<p><span class="tag">स्थापना</span> - चंद्रगुप्त मौर्य ने 321 ई.पू. में चाणक्य की नीति से साम्राज्य की नींव रखी। राजधानी पाटलिपुत्र।</p>
-        <div class="img-wrap">
-          <img src="https://picsum.photos/seed/maurya1/640/360" alt="maurya1"/>
-          <img src="https://picsum.photos/seed/maurya2/640/360" alt="maurya2"/>
-        </div>
-        <h3>टाइमलाइन व शासक</h3>
-        <div class="facts">
-          <div><b>चंद्रगुप्त</b> (321–297) — नंद वंश का अंत, सेल्यूकस से संधि।</div>
-          <div><b>बिंदूसार</b> (297–273) — साम्राज्य का विस्तार।</div>
-          <div><b>अशोक</b> (273–232) — कलिंग युद्ध के बाद धम्म नीति, शिलालेख।</div>
-          <div><b>पतन</b> — उत्तराधिकार/आर्थिक कारण → पुष्यमित्र शुंग द्वारा पतन।</div>
-        </div>
-        <h3>प्रशासन और अर्थव्यवस्था</h3>
-        <p>पाटलिपुत्र मोटा प्रशासनिक केंद्र; राजस्व, सिंचाई, व्यापार पर ध्यान; सिक्के व व्यापारिक मार्ग विकसित।</p>
-        <h3>धर्म और विरासत</h3>
-        <p>अशोक के धम्म ने भारतीय समाज में अहिंसा व सहिष्णुता का संदेश बढ़ाया; स्थापत्य व शिलालेखों की समृद्ध विरासत।</p>
-        <div class="hr"></div>
-        <p class="small"><b>PYQ TIP:</b> अशोक के शिलालेख व कलिंग युद्ध—आसान प्रश्न।</p>`
-      },
+  <div class="card">
+    <h3>Previous Papers</h3>
+    <p class="tag">Upload PDFs into your repo and add links here.</p>
+    <ul id="papersList"></ul>
+  </div>
 
-      {
-        id:"jain",
-        title:"जैन धर्म (Jainism)",
-        blurb:"महावीर, सिद्धांत, अनेकांतवाद, बुनियादी परीक्षा-नोट्स।",
-        cover:"https://picsum.photos/seed/jain/800/450",
-        html:`<p>जैन धर्म के 24वें तीर्थंकर महावीर का प्रमुख योगदान—अहिंसा व अपरिग्रह। वैशाली-पावापुरी के महत्व के साथ विस्तृत सिद्धांत।</p>
-        <div class="img-wrap">
-          <img src="https://picsum.photos/seed/jain1/640/360" alt="jain1"/>
-          <img src="https://picsum.photos/seed/jain2/640/360" alt="jain2"/>
-        </div>
-        <h3>मुख्य बातें</h3>
-        <ul>
-          <li>त्रिरत्न: सम्यक दर्शन, सम्यक ज्ञान, सम्यक चरित्र।</li>
-          <li>पंच महाव्रत: अहिंसा, सत्य, अचौर्य, ब्रह्मचर्य, अपरिग्रह।</li>
-          <li>संप्रदाय: दिगंबर व श्वेतांबर भेद।</li>
-        </ul>
-        <div class="hr"></div>
-        <p class="small"><b>Exam Focus:</b> अनेकांतवाद, तीर्थंकर क्रम, महावीर जीवन-प्रमुख घटनाएँ।</p>`
-      },
+  <div class="card">
+    <h3>Tips & Strategy</h3>
+    <p class="tag">Daily habit: 1 topic — read 20 mins — practice 10 questions.</p>
+    <p style="margin-top:10px">Save time: focus on high-weight topics, revise with flashcards, track errors.</p>
+  </div>
+</div>
 
-      {
-        id:"buddha",
-        title:"बौद्ध धर्म (Buddhism)",
-        blurb:"बुद्ध के उपदेश, चार आर्य सत्य, परिषदें और नालंदा-विक्रमशिला।",
-        cover:"https://picsum.photos/seed/buddha/800/450",
-        html:`<p>बोधगया में ज्ञान प्राप्ति, सारनाथ में उपदेश—बौद्ध धर्म का सार और परिषदों का महत्व।</p>
-        <div class="img-wrap">
-          <img src="https://picsum.photos/seed/buddha1/640/360" alt="buddha1"/>
-          <img src="https://picsum.photos/seed/buddha2/640/360" alt="buddha2"/>
-        </div>
-        <h3>महत्वपूर्ण सूत्र</h3>
-        <ul>
-          <li>चार आर्य सत्य और अष्टांगिक मार्ग।</li>
-          <li>संघ-व्यवस्था, परिषदों का आयोजन (राजगृह, वैशाली, पाटलिपुत्र)।</li>
-          <li>नालंदा, विक्रमशिला – शिक्षा केंद्र।</li>
-        </ul>
-        <div class="hr"></div>
-        <p class="small">PYQ pointers: परिषदें, अशोक के योगदान, नालंदा का महत्व।</p>`
-      },
+<section class="card mcq" id="mcqArea" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <div class="chip" id="topicChip">Topic</div>
+    </div>
+    <div style="color:var(--muted)">Score: <span id="score">0</span> / <span id="progressMax">0</span></div>
+  </div>
 
-      {
-        id:"mughal",
-        title:"मुगल काल (Mughal Era)",
-        blurb:"बाबर से औरंगज़ेब — प्रशासन, मानसबदारी, राजस्व, कला व बिहार का रोल।",
-        cover:"https://picsum.photos/seed/mughal/800/450",
-        html:`<p>1526 से अंग्रेजों के आने तक मुगल शासन का विस्तार—अकबर, शाहजहाँ, औरंगज़ेब के योगदान और समस्याएं।</p>
-        <div class="img-wrap">
-          <img src="https://picsum.photos/seed/mughal1/640/360" alt="mughal1"/>
-          <img src="https://picsum.photos/seed/mughal2/640/360" alt="mughal2"/>
-        </div>
-        <h3>प्रमुख बिंदु</h3>
-        <ul>
-          <li>मानसबदारी प्रणाली और जागीर—सेनापति-प्रशासनिक द्वैध।</li>
-          <li>अकबर की नीति—सुलेह-ए-कुल, प्रशासनिक सुधार, कला का उत्थान।</li>
-          <li>बिहार का आर्थिक महत्व (पटना, बनारस मार्ग)।</li>
-        </ul>
-        <div class="hr"></div>
-        <p class="small">Exam focus: मानसबदारी, दहसाला, अकबर का प्रशासन व धार्मिक नीति।</p>`
-      },
+  <div style="margin-top:12px">
+    <div class="question" id="qtext">Question goes here</div>
+    <div class="options" id="opts"></div>
+  </div>
 
-      // NEW: Freedom leaders (detailed)
-      {
-        id:"gandhi",
-        title:"महात्मा गाँधी (Mahatma Gandhi)",
-        blurb:"अहिंसा, सत्याग्रह, भारतीय स्वतन्त्रता आन्दोलन के प्रमुख चरण — पूरा नोट।",
-        cover:"https://picsum.photos/seed/gandhi/800/450",
-        html:`<p><b>मोहनदास करमचंद गाँधी</b> (1869–1948) — 'राष्ट्रपिता'। दक्षिण अफ्रीका में सत्याग्रह के अनुभवों के बाद भारत में असहयोग, सविनय अवज्ञा और भारत छोड़ो आंदोलन के नेतृत्वकर्ता बने।</p>
+  <div class="controls">
+    <button class="btn" id="prevBtn">Previous</button>
+    <button class="btn" id="nextBtn">Next</button>
+    <button class="btn" id="showAns">Show Answer</button>
+    <button class="btn" id="endSession">End Session</button>
+  </div>
 
-        <div class="img-wrap">
-          <img src="https://picsum.photos/seed/gandhi1/640/360" alt="gandhi1"/>
-          <img src="https://picsum.photos/seed/gandhi2/640/360" alt="gandhi2"/>
-        </div>
+  <div id="explain" style="margin-top:10px;color:var(--muted)"></div>
+</section>
 
-        <h3>जीवन के मुख्य चरण</h3>
-        <ul>
-          <li><b>दक्षिण अफ्रीका (1893–1915):</b> भारतीयों के अधिकार के लिए संघर्ष; सत्याग्रह की शुरुआत।</li>
-          <li><b>अहमदाबाद, 1915–1920:</b> ग्रामोद्योग, स्वरोजगार, सत्याग्रह सिद्धांत का भारतीय प्रयोग।</li>
-          <li><b>नव चरण – असहयोग आंदोलन (1920–22):</b> ब्रिटिश वस्तुओं का बहिष्कार, हाईकमान से टकराव।</li>
-          <li><b>सविनय अवज्ञा (1930):</b> नमक आंदोलन—घरेलू सुधार और सामूहिक आवाज़।</li>
-          <li><b>भारत छोड़ो (1942):</b> पूर्ण स्वतन्त्रता हेतु व्यापक नागरिक-आंदोलन।</li>
-          <li><b>विभाजन पर दुःख:</b> गाँधी ने सांप्रदायिक तनाव घटाने का प्रयास किया; 1948 में नमक सत्याग्रह के निशाने पर चेहरा बनाकर हत्या हुई।</li>
-        </ul>
+<footer>
+  Built with ❤ — Edit the code & host for free on GitHub Pages or Netlify. Add more topics under QUESTIONS array.<br>
+  <small class="tag">Pro tip: keep files small, compress images, add proper meta tags for SEO.</small>
+</footer>
 
-        <h3>विचार और धारणाएँ</h3>
-        <ul>
-          <li><b>सत्याग्रह:</b> अहिंसात्मक प्रतिरोध—नैतिक बल के माध्यम से बदलाव।</li>
-          <li><b>स्वदेशी व ग्राम स्वराज:</b> आत्मनिर्भर ग्राम समुदाय।</li>
-          <li><b>न्यूनतम जीवन</b>—सादा जीवन, उच्च विचार।</li>
-        </ul>
+  </div>  <script>
+    /* ========== SAMPLE QUESTIONS (edit this array) ========== */
+    const QUESTIONS = [
+      {id:1,topic:'CSAT',q:'A train 60m long crosses a pole in 3 sec. What is its speed?',
+        options:['20 m/s','16 m/s','26 m/s','18 m/s'],answer:0,explain:'Speed = distance/time = 60/3 = 20 m/s.'},
+      {id:2,topic:'History',q:'Who was the first Governor-General of independent India?',
+        options:['C. Rajagopalachari','Lord Mountbatten','Liaquat Ali Khan','C. Rajagopalachari'],answer:0,explain:'C. Rajagopalachari served as Governor-General (1948–50).'},
+      {id:3,topic:'Geography',q:'Which one is the longest river in India?',
+        options:['Ganga','Yamuna','Godavari','Narmada'],answer:2,explain:'Godavari is the longest river in peninsular India.'},
+      {id:4,topic:'Current Affairs',q:'Which country hosted COP26 in 2021?',
+        options:['United States','United Kingdom','France','India'],answer:1,explain:'COP26 was hosted by the UK (Glasgow).'},
+      {id:5,topic:'Polity',q:'How many members are there in Rajya Sabha?',
+        options:['245','250','300','238'],answer:0,explain:'Maximum strength of Rajya Sabha is 250; currently 245 members.'},
+      {id:6,topic:'CSAT',q:'If 5 men can build a wall in 10 days, how many men needed to finish in 5 days?',
+        options:['5','10','8','12'],answer:1,explain:'Work ∝ men. Double speed -> double men -> 10 men.'}
+    ];
 
-        <div class="hr"></div>
-        <p class="small"><b>Exam tips:</b> नमक आंदोलन का महत्व, असहयोग-नवजीवन सिद्धांत, गाँधी का ग्रामोदय और उनके प्रमुख आंदोलनों की chronology याद रखें।</p>`
-      },
+    /* ========== Utility & DOM ========== */
+    const topicsList = document.getElementById('topicsList');
+    const notesList = document.getElementById('notesList');
+    const papersList = document.getElementById('papersList');
+    const search = document.getElementById('search');
+    const startPractice = document.getElementById('startPractice');
+    const mcqArea = document.getElementById('mcqArea');
+    const qtext = document.getElementById('qtext');
+    const opts = document.getElementById('opts');
+    const scoreEl = document.getElementById('score');
+    const progressMax = document.getElementById('progressMax');
+    const topicChip = document.getElementById('topicChip');
+    const explain = document.getElementById('explain');
 
-      {
-        id:"ambedkar",
-        title:"डॉ. भीमराव अंबेडकर (B. R. Ambedkar)",
-        blurb:"संविधान निर्माता, दलित मुक्ति, सामाजिक-आर्थिक सुधार।",
-        cover:"https://picsum.photos/seed/ambedkar/800/450",
-        html:`<p><b>डॉ. भीमराव रामजी अंबेडकर</b> (1891–1956) — स्वतंत्र भारत के मुख्य संवैधानिक निर्माता, सामाजिक न्याय के समर्थक और अस्पृश्यता के खिलाफ प्रमुख योद्धा।</p>
+    let filtered = QUESTIONS.slice();
+    let idx = 0; let score=0;
 
-        <div class="img-wrap">
-          <img src="https://picsum.photos/seed/ambedkar1/640/360" alt="ambedkar1"/>
-          <img src="https://picsum.photos/seed/ambedkar2/640/360" alt="ambedkar2"/>
-        </div>
+    function uniq(arr){return [...new Set(arr)];}
 
-        <h3>योगदान</h3>
-        <ul>
-          <li><b>संविधानसभा के अध्यक्ष:</b> आधुनिक भारत के लिए न्याय, स्वतंत्रता और समानता के सिद्धांतों का समावेश।</li>
-          <li><b>जाति-विरोधी संघर्ष:</b> अस्पृश्यता उन्मूलन, सामाजिक समावेशन, दलित शिक्षा व अधिकारों के लिए प्रयास।</li>
-          <li><b>आर्थिक व सामाजिक नीतियाँ:</b> भूमि सुधार, आरक्षण का विचार और समता के लिए राजनीतिक सक्रियता।</li>
-        </ul>
-
-        <div class="hr"></div>
-        <p class="small">Exam focus: संविधान निर्माण में उनका रोल, आरक्षण का आधार, हॉग्ज़ और उनकी रिपोर्ट/सिफारिशें।</p>`
-      },
-
-      {
-        id:"subhash",
-        title:"नेताजी सुभाष चन्द्र बोस (Subhas Chandra Bose)",
-        blurb:"फॉरवर्ड-ब्लॉक, आजाद हिन्द फौज (INA) — क्रांतिकारी आंदोलन का दूसरा रूप।",
-        cover:"https://picsum.photos/seed/bose/800/450",
-        html:`<p><b>सुभाष चन्द्र बोस</b> — आक्रमक आजादी आन्दोलन के प्रमुख नेता; 'तुम मुझे खून दो, मैं तुम्हें आज़ादी दूंगा' के नारे से प्रसिद्ध। उन्होंने <b>इंडियन नेशनल आर्मी (INA)</b> का गठन किया और जापान/जर्मनी से मदद लेकर अंग्रेजों के खिलाफ लड़ाई की।</p>
-
-        <div class="img-wrap">
-          <img src="https://picsum.photos/seed/bose1/640/360" alt="bose1"/>
-          <img src="https://picsum.photos/seed/bose2/640/360" alt="bose2"/>
-        </div>
-
-        <h3>मुख्य घटनाएँ</h3>
-        <ul>
-          <li>फ़ॉरवर्ड ब्लॉक — कांग्रेस के अंदर रुख बदलाव।</li>
-          <li>INA का गठन — कप्तान भगत सिंह आदि के बाद आक्रामक आंदोलन।</li>
-          <li>रानी झाँसी रेजिमेंट, म्यांमार और बर्मा में अभियानों का नेतृत्व।</li>
-        </ul>
-
-        <div class="hr"></div>
-        <p class="small">Exam pointers: INA का महत्व, बोस की विदेश नीतियाँ, आज़ाद हिन्द सरकार (1943) का गठन।</p>`
-      }
-
-    ]; // end TOPICS
-
-    // ---------- render cards ----------
-    const cardsEl = document.getElementById('cards');
-    function renderCards(list=TOPICS){
-      cardsEl.innerHTML = list.map(t=>{
-        return `
-          <div class="card" onclick="openTopic('${t.id}')">
-            <img src="${t.cover}" alt="${escapeHtml(t.title)}"/>
-            <h3>${escapeHtml(t.title)}</h3>
-            <p>${escapeHtml(t.blurb)}</p>
-            <button type="button" onclick="event.stopPropagation(); openTopic('${t.id}')">Open full notes →</button>
-          </div>
-        `;
-      }).join('');
-    }
-    renderCards();
-
-    // ---------- search ----------
-    function doSearch(){
-      const q = document.getElementById('q').value.trim().toLowerCase();
-      if(!q){ renderCards(); return; }
-      const filtered = TOPICS.filter(t=> (t.title+t.blurb+t.id).toLowerCase().includes(q));
-      renderCards(filtered);
+    function renderTopics(){
+      const topics = uniq(QUESTIONS.map(q=>q.topic));
+      topicsList.innerHTML = '';
+      topics.forEach(t=>{
+        const b=document.createElement('button');
+        b.className='chip'; b.textContent=t; b.onclick=()=>{filterByTopic(t)};
+        topicsList.appendChild(b);
+      });
     }
 
-    // ---------- panel open/close ----------
-    const panel = document.getElementById('panel');
-    const titleEl = document.getElementById('title');
-    const subtitleEl = document.getElementById('subtitle');
-    const contentEl = document.getElementById('content');
-
-    function openTopic(id){
-      const t = TOPICS.find(x=>x.id===id);
-      if(!t) return;
-      titleEl.textContent = t.title;
-      subtitleEl.textContent = t.blurb;
-      contentEl.innerHTML = <div class="img-wrap"><img src="${t.cover}" alt="${escapeHtml(t.title)}"/></div> + (t.html||'<p>No details.</p>');
-      panel.classList.add('open'); panel.setAttribute('aria-hidden','false');
-      try{ history.pushState({id}, "", "#"+id); }catch(e){}
+    // sample resources — edit links to actual uploaded PDFs in your repo
+    function renderNotes(){
+      const notes = [
+        {title:'CSAT Quick Tricks (PDF)',url:'#'},
+        {title:'History One-Page Timeline (PDF)',url:'#'}
+      ];
+      notesList.innerHTML='';
+      notes.forEach(n=>{const li=document.createElement('li');li.innerHTML=<a href="${n.url}" style="color:inherit">${n.title}</a>;notesList.appendChild(li)});
+    }
+    function renderPapers(){
+      const papers=[{title:'UPSC Pre 2019 (PDF)',url:'#'},{title:'State Pre 2020 (PDF)',url:'#'}];
+      papersList.innerHTML='';papers.forEach(p=>{const li=document.createElement('li');li.innerHTML=<a href="${p.url}" style="color:inherit">${p.title}</a>;papersList.appendChild(li)});
     }
 
-    function closePanel(){
-      panel.classList.remove('open'); panel.setAttribute('aria-hidden','true');
-      try{ history.pushState({}, "", "#"); }catch(e){}
+    function filterByTopic(t){
+      filtered = QUESTIONS.filter(q=>q.topic===t);
+      idx=0; score=0; openMCQ(t);
     }
 
-    panel.addEventListener('click', e=>{ if(e.target===panel) closePanel(); });
+    function openMCQ(t){
+      mcqArea.style.display='block';
+      topicChip.textContent = t || 'Practice';
+      progressMax.textContent = filtered.length;
+      scoreEl.textContent = score;
+      showQuestion();
+      window.scrollTo({top:mcqArea.offsetTop-10,behavior:'smooth'});
+    }
 
-    // deep-link support
-    window.addEventListener('load', ()=>{
-      const hash = location.hash?.replace('#','');
-      if(hash){ openTopic(hash); }
-    });
-    window.addEventListener('popstate', ()=>{
-      const hash = location.hash?.replace('#','');
-      if(hash) openTopic(hash); else closePanel();
+    function showQuestion(){
+      if(filtered.length===0){qtext.textContent='No questions found';opts.innerHTML='';return}
+      const item = filtered[idx];
+      qtext.textContent = (idx+1)+'. '+item.q;
+      opts.innerHTML=''; explain.textContent = '';
+      item.options.forEach((op,i)=>{
+        const d=document.createElement('div');d.className='opt';d.textContent=op;d.onclick=()=>select(i);opts.appendChild(d);
+      });
+      scoreEl.textContent = score;
+    }
+
+    function select(i){
+      const item=filtered[idx];
+      const children = Array.from(opts.children);
+      children.forEach((c,ii)=>{c.classList.remove('correct','wrong'); c.onclick=null});
+      if(i===item.answer){children[i].classList.add('correct');score++;scoreEl.textContent = score}else{children[i].classList.add('wrong');children[item.answer].classList.add('correct')}
+      explain.textContent = 'Explanation: '+item.explain;
+      saveProgress();
+    }
+
+    function next(){ if(idx < filtered.length-1){ idx++; showQuestion(); } }
+    function prev(){ if(idx>0){ idx--; showQuestion(); } }
+
+    function saveProgress(){
+      const data = {filteredIndex:idx,score:score,filteredTopics:filtered.map(f=>f.id)};
+      localStorage.setItem('examhelper_progress',JSON.stringify(data));
+    }
+
+    function loadProgress(){
+      const raw = localStorage.getItem('examhelper_progress');
+      if(!raw) return; try{const data=JSON.parse(raw); score=data.score||0; scoreEl.textContent=score}catch(e){}
+    }
+
+    // search box behavior
+    search.addEventListener('input', ()=>{
+      const q=search.value.trim().toLowerCase();
+      if(!q){filtered=QUESTIONS.slice();renderTopics();return}
+      filtered = QUESTIONS.filter(item => item.q.toLowerCase().includes(q) || item.topic.toLowerCase().includes(q));
+      // show only the first matching topic immediately
+      if(filtered.length) openMCQ(filtered[0].topic);
     });
 
-    // small html-escape helper
-    function escapeHtml(s){
-      return (s+'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    }
-  </script>
-</body>
+    startPractice.addEventListener('click', ()=>{filtered = QUESTIONS.slice(); idx=0; score=0; openMCQ('Practice')});
+    document.getElementById('nextBtn').addEventListener('click', next);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+    document.getElementById('showAns').addEventListener('click', ()=>{const item=filtered[idx];explain.textContent='Answer: '+item.options[item.answer]+' — '+item.explain});
+    document.getElementById('endSession').addEventListener('click', ()=>{alert('Session ended. Your score: '+score+'/'+filtered.length);localStorage.removeItem('examhelper_progress');mcqArea.style.display='none'});
+
+    // initial render
+    renderTopics(); renderNotes(); renderPapers(); loadProgress();
+
+    /* ========== HOW TO EDIT ==========
+      - To add/remove questions: edit QUESTIONS array above (id,topic,q,options[],answer index,explain)
+      - To add downloadable notes: add actual file links under renderNotes()
+      - To change site title/description: edit the <title> and meta description in <head>
+
+      ========== KEEP IT LIGHTWEIGHT ===========
+      - Keep images compressed (webp) and host them in repo / CDN.
+      - For many questions, move QUESTIONS into a separate JSON file and fetch it asynchronously.
+    */
+  </script></body>
 </html>
