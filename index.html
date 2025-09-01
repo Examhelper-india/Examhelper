@@ -3,385 +3,346 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ExamHelper – Bihar History Notes (Full)</title>
-  <meta name="description" content="ExamHelper: Bihar History full notes — Maurya, Jainism, Buddhism, Mughal; images, timelines, key facts, PYQ pointers. Single page app with topic cards." />
+  <title>ExamHelper – Bihar & Freedom Leaders</title>
+  <meta name="description" content="ExamHelper: Full notes — Maurya, Jainism, Buddhism, Mughal, Gandhi, Ambedkar, Bose. Single page detailed notes with images." />
   <style>
     :root{
-      --bg:#0f1324;
-      --panel:#121733;
-      --accent:#8b5cf6;
-      --muted:#9aa4c7;
-      --text:#eef1ff;
-      --chip:#1f2a4d;
-      --card:#0f1a3a;
-      --ok:#22c55e;
+      --bg:#0f1324;--text:#eef1ff;--muted:#9aa4c7;--accent:#8b5cf6;--card:#0f1a3a;--ok:#22c55e;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b0f20,#0f1324 40%,#0b0f20);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;line-height:1.6}
-    a{color:#93c5fd;text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:1200px;margin:auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#050612,#091029);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif}
+    a{color:#93c5fd}
+    .wrap{max-width:1200px;margin:auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo{
-      width:44px;height:44px;border-radius:12px;
-      background: radial-gradient(120% 120% at 10% 10%,#c084fc 0%,#7c3aed 45%,#312e81 100%);
-      display:grid;place-items:center;box-shadow:0 8px 30px rgba(139,92,246,.45)
-    }
-    .logo svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
-    h1{font-size:22px;margin:0}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#4f46e5);display:grid;place-items:center;box-shadow:0 8px 22px rgba(75,0,130,.35)}
+    h1{font-size:20px;margin:0}
     .search{flex:1;display:flex;gap:8px}
-    .search input{flex:1;background:#0b1430;border:1px solid #26315c;color:var(--text);padding:12px 14px;border-radius:12px;outline:none}
-    .search button{background:var(--accent);color:#fff;border:0;padding:12px 16px;border-radius:12px;cursor:pointer;font-weight:700}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
-    .chip{background:var(--chip);border:1px solid #2a3764;padding:6px 10px;border-radius:999px;font-size:12px;color:#c9d4ff}
-    .grid{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:16px}
-    @media (max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:640px){.grid{grid-template-columns:1fr}}
-    .card{
-      background:linear-gradient(180deg,#0b1536,#0b1430);
-      border:1px solid #233060;border-radius:16px;padding:16px;min-height:160px;
-      display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 30px rgba(17,24,39,.35)
-    }
-    .card h3{margin:0 0 6px;font-size:18px;color:#c7d2fe}
+    .search input{flex:1;padding:10px;border-radius:10px;border:1px solid #26315c;background:#07102a;color:var(--text);outline:none}
+    .search button{background:var(--accent);border:0;padding:10px 12px;border-radius:10px;color:white;cursor:pointer;font-weight:700}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .chip{background:#0b1836;padding:6px 10px;border-radius:999px;border:1px solid #26325a;color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    @media(max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg,#07102a,#07122f);border:1px solid #253159;padding:14px;border-radius:14px;display:flex;flex-direction:column;gap:10px;min-height:170px}
+    .card img{width:100%;height:120px;object-fit:cover;border-radius:10px;border:1px solid #23325a}
+    .card h3{margin:0 0 4px;color:#c7d2fe;font-size:16px}
     .card p{margin:0;color:var(--muted);font-size:14px}
-    .card button{
-      margin-top:auto;background:#101a3b;border:1px solid #30407a;color:#dbe5ff;
-      padding:10px 12px;border-radius:12px;cursor:pointer
-    }
-    .card button:hover{border-color:#6b8cff}
-    .hero{
-      background:linear-gradient(135deg,#0e1636,#0b1230 60%,#111642);
-      border:1px solid #26315c;border-radius:18px;padding:18px;margin:10px 0 22px;
-      display:flex;gap:18px;align-items:center
-    }
-    .hero img{width:120px;height:90px;object-fit:cover;border-radius:12px;border:1px solid #2a3764}
-    .note{font-size:13px;color:#b6c2f5}
-    footer{margin-top:28px;color:#93a2d9;font-size:12px;text-align:center}
-    /* CONTENT PANEL (topic detail) */
-    .panel{
-      position:fixed;inset:0;background:rgba(7,10,24,.85);backdrop-filter:blur(6px);
-      display:none;align-items:stretch;justify-content:center;padding:24px;z-index:50
-    }
+    .card button{margin-top:auto;background:#0e1b3c;border:1px solid #31457a;color:#dbe9ff;padding:8px 10px;border-radius:10px;cursor:pointer}
+    .hero{background:linear-gradient(90deg,#07102a,#07152f);border:1px solid #26325a;border-radius:12px;padding:12px;display:flex;gap:12px;align-items:center;margin-bottom:14px}
+    .hero img{width:110px;height:80px;object-fit:cover;border-radius:10px;border:1px solid #23325a}
+    footer{margin-top:22px;color:#9fb0e6;font-size:13px;text-align:center}
+    /* PANEL */
+    .panel{position:fixed;inset:0;background:rgba(4,6,18,.78);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
     .panel.open{display:flex}
-    .sheet{
-      width:min(100%,980px);max-height:94vh;overflow:auto;background:linear-gradient(180deg,#0e1434,#0b1330);
-      border:1px solid #2b386c;border-radius:18px;padding:22px;box-shadow:0 20px 80px rgba(0,0,0,.6)
-    }
-    .sheet header{position:sticky;top:-22px;background:linear-gradient(180deg,#0e1434,#0b1330);padding-top:10px;margin-top:-10px;border-bottom:1px dashed #2a3a77}
-    .close{background:#182352;border:1px solid #33417a;color:#e5e9ff;border-radius:10px;padding:8px 10px;cursor:pointer}
-    .content h2{margin:4px 0 12px}
-    .content h3{margin:18px 0 8px;color:#c7d2fe}
-    .content p{color:#dbe3ff}
-    .facts{display:grid;grid-template-columns:repeat(2,minmax(200px,1fr));gap:10px;margin:10px 0}
-    @media(max-width:680px){.facts{grid-template-columns:1fr}}
-    .facts div{background:#0e1a3f;border:1px solid #2b3a72;border-radius:12px;padding:10px}
+    .sheet{width:min(100%,1024px);max-height:92vh;overflow:auto;background:linear-gradient(180deg,#05102a,#07102a);border-radius:14px;padding:18px;border:1px solid #2b3965}
+    .sheet header{display:flex;align-items:center;justify-content:space-between;gap:8px;position:sticky;top:0;background:linear-gradient(180deg,#05102a,#07102a);padding-bottom:6px;margin-bottom:8px}
+    .close{background:#162a58;border:1px solid #2f4a8a;padding:8px 10px;border-radius:10px;color:#dbe9ff;cursor:pointer}
+    .content h2{margin:6px 0 10px}
+    .content h3{color:#c7d2fe;margin-top:16px}
     .img-wrap{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
-    .img-wrap img{width:260px;max-width:100%;border-radius:12px;border:1px solid #2a3764}
-    .tag{display:inline-block;background:#16214a;border:1px solid #2a3668;border-radius:999px;padding:4px 8px;font-size:12px;color:#bfceff;margin-right:6px}
-    .ok{color:var(--ok);font-weight:700}
-    .small{font-size:13px;color:#a8b4e9}
+    .img-wrap img{width:300px;max-width:100%;border-radius:10px;border:1px solid #23325a}
+    .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media(max-width:680px){.facts{grid-template-columns:1fr}}
     .hr{height:1px;background:linear-gradient(90deg,transparent,#2b3a72,transparent);margin:16px 0}
+    .tag{display:inline-block;background:#0b1735;border-radius:999px;padding:4px 8px;border:1px solid #26325a;color:#cfe0ff;margin-right:6px}
+    .small{font-size:13px;color:#a9baf2}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo" aria-label="logo">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-            <path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 8.7l5.4-.8L12 3z" fill="#fff"/>
-          </svg>
+        <div class="logo" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 8.7l5.4-.8L12 3z" fill="#fff"/></svg>
         </div>
         <div>
-          <h1>ExamHelper – Bihar History</h1>
-          <div class="small">Free notes • Images • Timelines • PYQ pointers</div>
+          <h1>ExamHelper — Full Notes (Bihar & Leaders)</h1>
+          <div class="small">Detailed single page notes • Click any card → read full notes</div>
         </div>
       </div>
+
       <div class="search">
-        <input id="q" placeholder="Search topics… (e.g., Maurya, Buddhism, Mughal)" />
+        <input id="q" placeholder="Search topics (e.g., Gandhi, Maurya, Mughal)"/>
         <button onclick="doSearch()">Search</button>
       </div>
     </header>
 
     <div class="hero">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Nalanda_University_India_ruines.jpg/640px-Nalanda_University_India_ruines.jpg" alt="Nalanda ruins"/>
+      <img src="https://picsum.photos/seed/nalanda/640/360" alt="hero"/>
       <div>
-        <b>कैसे पढ़ें?</b>
-        <div class="note">1) पहले era समझो → 2) rulers/events timeline → 3) features/administration → 4) संस्कृति/धर्म → 5) decline & legacy → 6) PYQ facts.</div>
-        <div class="chips">
-          <span class="chip">#BiharHistory</span>
-          <span class="chip">#Maurya</span>
-          <span class="chip">#Jainism</span>
-          <span class="chip">#Buddhism</span>
-          <span class="chip">#Mughal</span>
+        <div style="font-weight:700">Study smart — single page full notes</div>
+        <div class="small">Click any card to open long-form notes with images and exam pointers.</div>
+        <div class="chips" style="margin-top:8px">
+          <span class="chip">#History</span><span class="chip">#FreedomLeaders</span><span class="chip">#Bihar</span><span class="chip">#ExamPrep</span>
         </div>
       </div>
     </div>
 
-    <!-- TOPIC CARDS (columns/grid) -->
+    <!-- grid of cards generated from data -->
     <div class="grid" id="cards"></div>
 
-    <footer>
-      Built with ❤ by ExamHelper • Single page app • Add/modify topics in JS easily.
+    <footer id="footer">
+      Built with ❤ — <strong>Wasif Qamar</strong> • Keep adding topics in JS (TOPICS array) to expand.
     </footer>
   </div>
 
-  <!-- DETAIL PANEL -->
+  <!-- panel -->
   <div class="panel" id="panel" aria-hidden="true">
-    <div class="sheet">
+    <div class="sheet" role="dialog" aria-modal="true">
       <header>
-        <div class="brand"><div class="logo" style="width:32px;height:32px"></div><h2 id="title" style="margin:0"></h2></div>
-        <button class="close" onclick="closePanel()">Close ✕</button>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#8b5cf6,#4f46e5)"></div>
+            <div>
+              <h2 id="title" style="margin:0"></h2>
+              <div class="small" id="subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="close" onclick="closePanel()">Close ✕</button>
+        </div>
       </header>
+
       <div class="content" id="content"></div>
     </div>
   </div>
 
   <script>
-    // ---------- DATA: Add/Update topics here ----------
+    // ---------- TOPICS (add/modify here) ----------
+    // Using picsum.photos seeded URLs for AI-like images (no Wikipedia hotlink)
     const TOPICS = [
+      // existing history topics
       {
         id:"maurya",
-        title:"मौर्य काल (321–185 ई.पू.)",
-        blurb:"चंद्रगुप्त से अशोक तक — प्रशासन, अर्थव्यवस्था, धर्म नीति और विरासत।",
-        cover:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Ashoka_Lion_Capital%2C_Sarnath.jpg/640px-Ashoka_Lion_Capital%2C_Sarnath.jpg",
-        html: `
-        <p><span class="tag">स्थापना</span> मगध के नंद वंश के पतन के बाद <b>चाणक्य</b> की रणनीति से <b>चंद्रगुप्त मौर्य</b> ने 321 ई.पू. में साम्राज्य स्थापित किया। राजधानी <b>पाटलिपुत्र</b> (आधुनिक पटना) रही। यूनानी राजदूत <b>मेगस्थनीज</b> ने <i>इंडिका</i> में मौर्य प्रशासन, समाज और अर्थव्यवस्था का विस्तृत वर्णन किया।</p>
-
+        title:"मौर्य काल (Maurya Empire)",
+        blurb:"चंद्रगुप्त→अशोक — शासन, अर्थव्यवस्था, धर्म और विरासत (पूरा नोट).",
+        cover:"https://picsum.photos/seed/maurya/800/450",
+        html:`<p><span class="tag">स्थापना</span> - चंद्रगुप्त मौर्य ने 321 ई.पू. में चाणक्य की नीति से साम्राज्य की नींव रखी। राजधानी पाटलिपुत्र।</p>
         <div class="img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Patliputra.jpg/640px-Patliputra.jpg" alt="Pataliputra"/>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Ashoka_Pillar%2C_Vaishali.jpg/640px-Ashoka_Pillar%2C_Vaishali.jpg" alt="Ashoka pillar Vaishali"/>
+          <img src="https://picsum.photos/seed/maurya1/640/360" alt="maurya1"/>
+          <img src="https://picsum.photos/seed/maurya2/640/360" alt="maurya2"/>
         </div>
-
-        <h3>प्रमुख शासक व टाइमलाइन</h3>
+        <h3>टाइमलाइन व शासक</h3>
         <div class="facts">
-          <div><b>चंद्रगुप्त (321–297)</b><br/>सेल्यूकस निकेटर से युद्ध (305 ई.पू.); <i>सेल्यूकस-चंद्रगुप्त संधि</i> के बाद उत्तर-पश्चिमी प्रांत प्राप्त; यूनानी राजदूत मेगस्थनीज का आगमन।</div>
-          <div><b>बिंदुसार (297–273)</b><br/>एण्टिओकस-I से कूटनीतिक संबंध; साम्राज्य विस्तार दक्षिण तक (देवनामप्रिय प्रियदर्शी के शिलालेख संकेत)।</div>
-          <div><b>अशोक (273–232)</b><br/>कलिंग युद्ध (261 ई.पू.) के बाद <b>धम्म</b> नीति; स्तंभ-शिलालेख, शिल्प-विकास; बौद्ध धर्म संरक्षण; तृतीय बौद्ध संगीति।</div>
-          <div><b>उत्तराधिकारी</b><br/>दशरथ, संपादित अशोक स्तंभों का निर्माण; अंततः 185 ई.पू. में <b>पुष्यमित्र शुंग</b> द्वारा मौर्य पतन।</div>
+          <div><b>चंद्रगुप्त</b> (321–297) — नंद वंश का अंत, सेल्यूकस से संधि।</div>
+          <div><b>बिंदूसार</b> (297–273) — साम्राज्य का विस्तार।</div>
+          <div><b>अशोक</b> (273–232) — कलिंग युद्ध के बाद धम्म नीति, शिलालेख।</div>
+          <div><b>पतन</b> — उत्तराधिकार/आर्थिक कारण → पुष्यमित्र शुंग द्वारा पतन।</div>
         </div>
-
-        <h3>प्रशासनिक व्यवस्था</h3>
-        <ul>
-          <li>केन्द्रीय तंत्र: राजा के साथ <b>मंत्रि-परिषद</b>; विभाग – राजस्व, खनिज, सड़क, गोशाला, समुद्री व्यापार आदि (मेगस्थनीज के अनुसार)।</li>
-          <li>प्रांतीय शासन: <b>उज्जैनी, तक्षशिला, ताम्रलिप्ति</b> जैसे केन्द्र; <b>कुमार/आर्यपुत्र</b> प्रांतीय गवर्नर।</li>
-          <li>नगर प्रशासन: पाटलिपुत्र में 6 समितियाँ (स्वच्छता, उद्योग, व्यापार, कर, परिवहन, जनगणना)।</li>
-          <li>सेना: विशाल स्थायी सेना; घुड़सवार, पैदल, हाथी, रथ – ग्रीक स्रोतों में उल्लेख।</li>
-        </ul>
-
-        <h3>अर्थव्यवस्था व समाज</h3>
-        <ul>
-          <li>संगठित <b>भूमि-राजस्व</b> व्यवस्था; सिंचाई (सुदर्शन झील – जूनागढ़ अभिलेख)।</li>
-          <li>सिक्के: पंच-मार्क्ड कॉइन्स; दूर-दराज व्यापार – रेशम मार्ग से सम्पर्क।</li>
-          <li>शिल्प व कला: पॉलिश्ड शिलाखंड, <b>लौह-तकनीक</b>, रायलकला, यक्ष-यक्षी मूर्तियाँ।</li>
-        </ul>
-
-        <h3>धर्म और धम्म</h3>
-        <p>अशोक ने कलिंग युद्ध के बाद <b>अहिंसा, दया, समन्वय</b> पर आधारित <b>धम्म</b> नीति घोषित की। शिलालेखों से पशुबलि निषेध, प्रजा-कल्याण, धार्मिक सहिष्णुता के आदेश मिलते हैं। <b>धम्म महामात्र</b> नियुक्त किए गए।</p>
-
-        <div class="img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Sarnath_Museum_Ashoka_Edict.jpg/512px-Sarnath_Museum_Ashoka_Edict.jpg" alt="Edict"/>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Great_Stupa_of_Sanchi.jpg/640px-Great_Stupa_of_Sanchi.jpg" alt="Sanchi Stupa"/>
-        </div>
-
-        <h3>पतन के कारण</h3>
-        <ul>
-          <li>अत्यधिक विशाल साम्राज्य का प्रशासनिक बोझ; कमजोर उत्तराधिकारी।</li>
-          <li>स्थायी सेना व कल्याणकारी नीतियों से आर्थिक भार।</li>
-          <li>सीमावर्ती विद्रोह (तक्षशिला) व शक-यवन आक्रमण।</li>
-        </ul>
-
+        <h3>प्रशासन और अर्थव्यवस्था</h3>
+        <p>पाटलिपुत्र मोटा प्रशासनिक केंद्र; राजस्व, सिंचाई, व्यापार पर ध्यान; सिक्के व व्यापारिक मार्ग विकसित।</p>
+        <h3>धर्म और विरासत</h3>
+        <p>अशोक के धम्म ने भारतीय समाज में अहिंसा व सहिष्णुता का संदेश बढ़ाया; स्थापत्य व शिलालेखों की समृद्ध विरासत।</p>
         <div class="hr"></div>
-        <p><b>विरासत:</b> सिंह-शीर्ष राष्ट्रीय प्रतीक; धर्म-राष्ट्र नीति का आदर्श; सांची-सारणाथ जैसे स्मारक। <span class="ok">PYQ टिप:</span> “धम्म”, “धम्म-महामात्र”, “कलिंग के परिणाम”, “मेगस्थनीज की समितियाँ” अक्सर पूछे जाते हैं।</p>
-        `
+        <p class="small"><b>PYQ TIP:</b> अशोक के शिलालेख व कलिंग युद्ध—आसान प्रश्न।</p>`
       },
 
       {
         id:"jain",
-        title:"जैन धर्म (महावीर व दर्शन)",
-        blurb:"अहिंसा, अपरिग्रह, अnekantavada — सिद्धांत, संप्रदाय, ग्रंथ और बिहार का योगदान।",
-        cover:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Jain_Temple_Pavapuri.jpg/640px-Jain_Temple_Pavapuri.jpg",
-        html: `
-        <p>जैन परम्परा के 24वें तीर्थंकर <b>महावीर</b> (वर्धमान) का जन्म<b> वैशाली</b> क्षेत्र (कुंडीग्राम) में माना जाता है। उन्होंने 30 वर्ष की आयु में त्याग कर <b>दीक्षा</b> ली और 12 वर्षों के कठोर साधना के बाद <b>कैवल्य</b> (केवली) प्राप्त किया। निर्वाण स्थल: <b>पावापुरी (बिहार)</b>।</p>
-
+        title:"जैन धर्म (Jainism)",
+        blurb:"महावीर, सिद्धांत, अनेकांतवाद, बुनियादी परीक्षा-नोट्स।",
+        cover:"https://picsum.photos/seed/jain/800/450",
+        html:`<p>जैन धर्म के 24वें तीर्थंकर महावीर का प्रमुख योगदान—अहिंसा व अपरिग्रह। वैशाली-पावापुरी के महत्व के साथ विस्तृत सिद्धांत।</p>
         <div class="img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Jain_Samantabhadra.JPG/512px-Jain_Samantabhadra.JPG" alt="Jain sculpture"/>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Jal_Mandir_Pawapuri.jpg/640px-Jal_Mandir_Pawapuri.jpg" alt="Jal Mandir Pawapuri"/>
+          <img src="https://picsum.photos/seed/jain1/640/360" alt="jain1"/>
+          <img src="https://picsum.photos/seed/jain2/640/360" alt="jain2"/>
         </div>
-
-        <h3>मुख्य सिद्धांत</h3>
+        <h3>मुख्य बातें</h3>
         <ul>
-          <li><b>त्रिरत्न:</b> सम्यक दर्शन, सम्यक ज्ञान, सम्यक चरित्र।</li>
-          <li><b>पंच महाव्रत:</b> अहिंसा, सत्य, अचौर्य, ब्रह्मचर्य, अपरिग्रह।</li>
-          <li><b>अनेकांतवाद</b> व <b>स्याद्वाद</b> — सत्य बहु-आयामी; दृष्टिकोण-आधारित कथन।</li>
-          <li>कर्म सिद्धांत, जीव-अजीव, बंधन-मोक्ष की अवधारणा।</li>
+          <li>त्रिरत्न: सम्यक दर्शन, सम्यक ज्ञान, सम्यक चरित्र।</li>
+          <li>पंच महाव्रत: अहिंसा, सत्य, अचौर्य, ब्रह्मचर्य, अपरिग्रह।</li>
+          <li>संप्रदाय: दिगंबर व श्वेतांबर भेद।</li>
         </ul>
-
-        <h3>संप्रदाय, ग्रंथ व परम्परा</h3>
-        <ul>
-          <li><b>दिगंबर</b> व <b>श्वेतांबर</b> — वस्त्र, आचार व ग्रंथ पर मतभेद।</li>
-          <li>श्वेतांबर आगम: <i>आचारांग, सूत्रकृतांग</i> आदि। दिगंबर ग्रंथ: <i>कसायपाहुड़</i>, <i>समयसार</i>।</li>
-          <li>जैन गणित/तर्क व साहित्य में योगदान — <b>भद्रबाहु, उमास्वाति, समन्तभद्र, हेमचंद्र</b>।</li>
-        </ul>
-
-        <h3>बिहार का योगदान</h3>
-        <p>वैशाली, पावापुरी, राजगीर, नालंदा परिसर में जैन स्मृति-स्थल। मौर्य-पूर्व गणराज्यों में जैन साधुओं को आश्रय; चंद्रगुप्त मौर्य ने अंतिम समय दिगंबर परम्परा में श्रवणबेलगोला की तपस्या अपनाई (परम्परा अनुसार)।</p>
-
         <div class="hr"></div>
-        <p><span class="ok">Exam Pointers:</span> 24 तीर्थंकर क्रम, पंचव्रत, अनेकांतवाद व श्वेतांबर-दिगंबर भेद — बार-बार पूछे जाते हैं।</p>
-        `
+        <p class="small"><b>Exam Focus:</b> अनेकांतवाद, तीर्थंकर क्रम, महावीर जीवन-प्रमुख घटनाएँ।</p>`
       },
 
       {
         id:"buddha",
-        title:"बौद्ध धर्म (गौतम बुद्ध व प्रसार)",
-        blurb:"चार आर्य सत्य, अष्टांगिक मार्ग, संघ, परिषदें, बिहार के पवित्र स्थल।",
-        cover:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Mahabodhi_Temple_-Bodh_Gaya.jpg/640px-Mahabodhi_Temple-_Bodh_Gaya.jpg",
-        html: `
-        <p><b>गौतम बुद्ध</b> का जन्म लुम्बिनी (कपिलवस्तु) में; ज्ञान की प्राप्ति <b>बोधगया</b> (बिहार) में, प्रथम उपदेश <b>सारनाथ</b> में और महापरिनिर्वाण कुशीनगर में हुआ। बिहार बौद्ध परंपरा का केंद्र रहा—नालंदा-विक्रमशिला विश्वविद्यालयों ने इसे वैभव दिया।</p>
-
+        title:"बौद्ध धर्म (Buddhism)",
+        blurb:"बुद्ध के उपदेश, चार आर्य सत्य, परिषदें और नालंदा-विक्रमशिला।",
+        cover:"https://picsum.photos/seed/buddha/800/450",
+        html:`<p>बोधगया में ज्ञान प्राप्ति, सारनाथ में उपदेश—बौद्ध धर्म का सार और परिषदों का महत्व।</p>
         <div class="img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Buddha_Bodhgaya_Mahabodhi.jpg/512px-Buddha_Bodhgaya_Mahabodhi.jpg" alt="Bodhgaya statue"/>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vikramshila_Monastery_Ruins.jpg/640px-Vikramshila_Monastery_Ruins.jpg" alt="Vikramshila"/>
+          <img src="https://picsum.photos/seed/buddha1/640/360" alt="buddha1"/>
+          <img src="https://picsum.photos/seed/buddha2/640/360" alt="buddha2"/>
         </div>
-
-        <h3>उपदेश</h3>
+        <h3>महत्वपूर्ण सूत्र</h3>
         <ul>
-          <li><b>चार आर्य सत्य</b>: दुःख, दुःख समुदय (तृष्णा), निरोध, मार्ग।</li>
-          <li><b>अष्टांगिक मार्ग</b> (सम्यक दृष्टि से सम्यक समाधि तक)।</li>
-          <li>मध्यम मार्ग, अनित्य/अनात्म, करुणा, अहिंसा।</li>
+          <li>चार आर्य सत्य और अष्टांगिक मार्ग।</li>
+          <li>संघ-व्यवस्था, परिषदों का आयोजन (राजगृह, वैशाली, पाटलिपुत्र)।</li>
+          <li>नालंदा, विक्रमशिला – शिक्षा केंद्र।</li>
         </ul>
-
-        <h3>संगठन व परिषदें</h3>
-        <div class="facts">
-          <div><b>पहली परिषद (राजगृह, 483 ई.पू.)</b> — उपालि द्वारा विनय पिटक; आनंद द्वारा सुत्त पिटक का संकलन।</div>
-          <div><b>दूसरी (वैशाली, 383 ई.पू.)</b> — आचार-विवाद; स्थविरवाद बनाम महासांगिक।</div>
-          <div><b>तीसरी (पाटलिपुत्र, अशोक)</b> — मिशनरियों की नियुक्ति; <i>थेरवाद</i> का प्रसार।</div>
-          <div><b>चौथी (कश्मीर/कुशीनगर परम्पराएँ)</b> — विभिन्न निकाय व साहित्य विकास।</div>
-        </div>
-
-        <h3>विकास व प्रसार</h3>
-        <ul>
-          <li>अशोक के स्तंभ-शिलालेख, स्तूप (सांची) — संरक्षक।</li>
-          <li>महायान (बोधिसत्व आदर्श) व हीनयान/थेरवाद का भेद; बौद्ध कला – गांधार/मथुरा/अमरावती शैलियाँ।</li>
-          <li>चीन, श्रीलंका, दक्षिण-पूर्व एशिया तक प्रसार; नालंदा में शुआनज़ांग (ह्वेनसांग) का अध्ययन।</li>
-        </ul>
-
         <div class="hr"></div>
-        <p><span class="ok">PYQ:</span> परिषदें, चार आर्य सत्य, अष्टांगिक मार्ग, बौद्ध कला-शैलियाँ — पक्के प्रश्न।</p>
-        `
+        <p class="small">PYQ pointers: परिषदें, अशोक के योगदान, नालंदा का महत्व।</p>`
       },
 
       {
         id:"mughal",
-        title:"मुगल काल (1526–1857)",
-        blurb:"बाबर से औरंगज़ेब तक — प्रशासन, संस्कृति, अर्थव्यवस्था और बिहार का परिदृश्य।",
-        cover:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Fatehpur_Sikri_Buland_Darwaza.jpg/640px-Fatehpur_Sikri_Buland_Darwaza.jpg",
-        html: `
-        <p>16वीं शताब्दी में <b>बाबर</b> ने 1526 में <b>पानीपत</b> में इब्राहीम लोदी को हराकर मुगल राज्य की नींव रखी। बिहार क्षेत्र रणनीतिक दृष्टि से महत्वपूर्ण रहा—गंगा-पथ, व्यापारिक नगर, तथा अफगान शक्तियों से संघर्ष।</p>
+        title:"मुगल काल (Mughal Era)",
+        blurb:"बाबर से औरंगज़ेब — प्रशासन, मानसबदारी, राजस्व, कला व बिहार का रोल।",
+        cover:"https://picsum.photos/seed/mughal/800/450",
+        html:`<p>1526 से अंग्रेजों के आने तक मुगल शासन का विस्तार—अकबर, शाहजहाँ, औरंगज़ेब के योगदान और समस्याएं।</p>
+        <div class="img-wrap">
+          <img src="https://picsum.photos/seed/mughal1/640/360" alt="mughal1"/>
+          <img src="https://picsum.photos/seed/mughal2/640/360" alt="mughal2"/>
+        </div>
+        <h3>प्रमुख बिंदु</h3>
+        <ul>
+          <li>मानसबदारी प्रणाली और जागीर—सेनापति-प्रशासनिक द्वैध।</li>
+          <li>अकबर की नीति—सुलेह-ए-कुल, प्रशासनिक सुधार, कला का उत्थान।</li>
+          <li>बिहार का आर्थिक महत्व (पटना, बनारस मार्ग)।</li>
+        </ul>
+        <div class="hr"></div>
+        <p class="small">Exam focus: मानसबदारी, दहसाला, अकबर का प्रशासन व धार्मिक नीति।</p>`
+      },
+
+      // NEW: Freedom leaders (detailed)
+      {
+        id:"gandhi",
+        title:"महात्मा गाँधी (Mahatma Gandhi)",
+        blurb:"अहिंसा, सत्याग्रह, भारतीय स्वतन्त्रता आन्दोलन के प्रमुख चरण — पूरा नोट।",
+        cover:"https://picsum.photos/seed/gandhi/800/450",
+        html:`<p><b>मोहनदास करमचंद गाँधी</b> (1869–1948) — 'राष्ट्रपिता'। दक्षिण अफ्रीका में सत्याग्रह के अनुभवों के बाद भारत में असहयोग, सविनय अवज्ञा और भारत छोड़ो आंदोलन के नेतृत्वकर्ता बने।</p>
 
         <div class="img-wrap">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Humayun_Tomb%2C_Delhi.jpg/640px-Humayun_Tomb%2C_Delhi.jpg" alt="Humayun Tomb"/>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Red_Fort_in_Delhi_03-2016_img3.jpg/640px-Red_Fort_in_Delhi_03-2016_img3.jpg" alt="Red Fort"/>
+          <img src="https://picsum.photos/seed/gandhi1/640/360" alt="gandhi1"/>
+          <img src="https://picsum.photos/seed/gandhi2/640/360" alt="gandhi2"/>
         </div>
 
-        <h3>रulers & प्रमुख घटनाएँ (संक्षिप्त)</h3>
-        <div class="facts">
-          <div><b>बाबर (1526–30)</b> – पानीपत, खानवा, घाघरा; तोपखाने का प्रभाव।</div>
-          <div><b>हुमायूँ</b> – शेरशाह सूरी से पराजय; पुनर्वापसी के बाद 1556 में निधन।</div>
-          <div><b>अकबर (1556–1605)</b> – <b>मानसबदारी</b>, दीन-ए-इलाही, धार्मिक सहिष्णुता; बिहार-सूबा व्यवस्था।</div>
-          <div><b>जहाँगीर–शाहजहाँ</b> – कला/वास्तुकला उत्कर्ष, ताजमहल; व्यापार में उछाल।</div>
-          <div><b>औरंगज़ेब</b> – विस्तारण, धार्मिक नीति परिवर्तन; अंततः प्रांतीय स्वायत्तता व आर्थिक दबाव से क्षय।</div>
-        </div>
-
-        <h3>प्रशासन व अर्थव्यवस्था</h3>
+        <h3>जीवन के मुख्य चरण</h3>
         <ul>
-          <li><b>मानसबदारी</b> — सैन्य-नागरिक श्रेणी; <b>जागीर</b> आवंटन, ज़ब्त नीति।</li>
-          <li><b>आबकारी-राजस्व</b> — टोडरमल की <i>दहसाला</i> पद्धति; सर्वे-नाप; उपज/भाड़ा आधारित कर।</li>
-          <li>व्यापार – कच्छ/सूरत, बंगाल के बन्दरगाह; यूरोपीय कंपनियों से संपर्क।</li>
-          <li>बिहार: <b>पटना</b> में अफीम/रेशम/कागज़ उद्योग; 17वीं सदी में यूरोपीय फैक्टरियाँ।</li>
+          <li><b>दक्षिण अफ्रीका (1893–1915):</b> भारतीयों के अधिकार के लिए संघर्ष; सत्याग्रह की शुरुआत।</li>
+          <li><b>अहमदाबाद, 1915–1920:</b> ग्रामोद्योग, स्वरोजगार, सत्याग्रह सिद्धांत का भारतीय प्रयोग।</li>
+          <li><b>नव चरण – असहयोग आंदोलन (1920–22):</b> ब्रिटिश वस्तुओं का बहिष्कार, हाईकमान से टकराव।</li>
+          <li><b>सविनय अवज्ञा (1930):</b> नमक आंदोलन—घरेलू सुधार और सामूहिक आवाज़।</li>
+          <li><b>भारत छोड़ो (1942):</b> पूर्ण स्वतन्त्रता हेतु व्यापक नागरिक-आंदोलन।</li>
+          <li><b>विभाजन पर दुःख:</b> गाँधी ने सांप्रदायिक तनाव घटाने का प्रयास किया; 1948 में नमक सत्याग्रह के निशाने पर चेहरा बनाकर हत्या हुई।</li>
         </ul>
 
-        <h3>संस्कृति</h3>
+        <h3>विचार और धारणाएँ</h3>
         <ul>
-          <li>अकबर का <b>सुलेह-ए-कुल</b>, चित्रकला (हामज़ानामा), संगीत (तansen), स्थापत्य (फतेहपुर सीकरी)।</li>
-          <li>शाहजहाँ शैली — संगमरमर, जड़ाऊ कला; उद्यान-योजना (चारबाग)।</li>
-          <li>उर्दू/हिंदी साहित्य, फ़ारसी इतिहास-ग्रंथ (अकबरनामा-आइने-अकबरी)।</li>
-        </ul>
-
-        <h3>क्षय व विरासत</h3>
-        <ul>
-          <li>लम्बे युद्ध, कर-भार, जागीर संकट; प्रांतीय उभार (बंगाल- अवध- हैदराबाद)।</li>
-          <li>1739 नादिरशाह, 1761 अहमदशाह अब्दाली; 1757 प्लासी के बाद अंग्रेजी प्रभुत्व।</li>
-          <li>विरासत: कला-स्थापत्य, प्रशासनिक परम्परा, राजस्व-रिकॉर्ड, मिश्रित संस्कृति।</li>
+          <li><b>सत्याग्रह:</b> अहिंसात्मक प्रतिरोध—नैतिक बल के माध्यम से बदलाव।</li>
+          <li><b>स्वदेशी व ग्राम स्वराज:</b> आत्मनिर्भर ग्राम समुदाय।</li>
+          <li><b>न्यूनतम जीवन</b>—सादा जीवन, उच्च विचार।</li>
         </ul>
 
         <div class="hr"></div>
-        <p class="small"><span class="ok">Exam Focus:</span> मानसबदारी/जागीर, दहसाला, अकबर की धार्मिक नीति, बिहार-पटना का औद्योगिक महत्व, औरंगज़ेब के समय का संकट।</p>
-        `
-      }
-    ];
+        <p class="small"><b>Exam tips:</b> नमक आंदोलन का महत्व, असहयोग-नवजीवन सिद्धांत, गाँधी का ग्रामोदय और उनके प्रमुख आंदोलनों की chronology याद रखें।</p>`
+      },
 
-    // ---------- RENDER CARDS ----------
+      {
+        id:"ambedkar",
+        title:"डॉ. भीमराव अंबेडकर (B. R. Ambedkar)",
+        blurb:"संविधान निर्माता, दलित मुक्ति, सामाजिक-आर्थिक सुधार।",
+        cover:"https://picsum.photos/seed/ambedkar/800/450",
+        html:`<p><b>डॉ. भीमराव रामजी अंबेडकर</b> (1891–1956) — स्वतंत्र भारत के मुख्य संवैधानिक निर्माता, सामाजिक न्याय के समर्थक और अस्पृश्यता के खिलाफ प्रमुख योद्धा।</p>
+
+        <div class="img-wrap">
+          <img src="https://picsum.photos/seed/ambedkar1/640/360" alt="ambedkar1"/>
+          <img src="https://picsum.photos/seed/ambedkar2/640/360" alt="ambedkar2"/>
+        </div>
+
+        <h3>योगदान</h3>
+        <ul>
+          <li><b>संविधानसभा के अध्यक्ष:</b> आधुनिक भारत के लिए न्याय, स्वतंत्रता और समानता के सिद्धांतों का समावेश।</li>
+          <li><b>जाति-विरोधी संघर्ष:</b> अस्पृश्यता उन्मूलन, सामाजिक समावेशन, दलित शिक्षा व अधिकारों के लिए प्रयास।</li>
+          <li><b>आर्थिक व सामाजिक नीतियाँ:</b> भूमि सुधार, आरक्षण का विचार और समता के लिए राजनीतिक सक्रियता।</li>
+        </ul>
+
+        <div class="hr"></div>
+        <p class="small">Exam focus: संविधान निर्माण में उनका रोल, आरक्षण का आधार, हॉग्ज़ और उनकी रिपोर्ट/सिफारिशें।</p>`
+      },
+
+      {
+        id:"subhash",
+        title:"नेताजी सुभाष चन्द्र बोस (Subhas Chandra Bose)",
+        blurb:"फॉरवर्ड-ब्लॉक, आजाद हिन्द फौज (INA) — क्रांतिकारी आंदोलन का दूसरा रूप।",
+        cover:"https://picsum.photos/seed/bose/800/450",
+        html:`<p><b>सुभाष चन्द्र बोस</b> — आक्रमक आजादी आन्दोलन के प्रमुख नेता; 'तुम मुझे खून दो, मैं तुम्हें आज़ादी दूंगा' के नारे से प्रसिद्ध। उन्होंने <b>इंडियन नेशनल आर्मी (INA)</b> का गठन किया और जापान/जर्मनी से मदद लेकर अंग्रेजों के खिलाफ लड़ाई की।</p>
+
+        <div class="img-wrap">
+          <img src="https://picsum.photos/seed/bose1/640/360" alt="bose1"/>
+          <img src="https://picsum.photos/seed/bose2/640/360" alt="bose2"/>
+        </div>
+
+        <h3>मुख्य घटनाएँ</h3>
+        <ul>
+          <li>फ़ॉरवर्ड ब्लॉक — कांग्रेस के अंदर रुख बदलाव।</li>
+          <li>INA का गठन — कप्तान भगत सिंह आदि के बाद आक्रामक आंदोलन।</li>
+          <li>रानी झाँसी रेजिमेंट, म्यांमार और बर्मा में अभियानों का नेतृत्व।</li>
+        </ul>
+
+        <div class="hr"></div>
+        <p class="small">Exam pointers: INA का महत्व, बोस की विदेश नीतियाँ, आज़ाद हिन्द सरकार (1943) का गठन।</p>`
+      }
+
+    ]; // end TOPICS
+
+    // ---------- render cards ----------
     const cardsEl = document.getElementById('cards');
     function renderCards(list=TOPICS){
-      cardsEl.innerHTML = list.map(t=>`
-        <div class="card">
-          <img src="${t.cover}" alt="${t.title}" style="width:100%;height:120px;object-fit:cover;border-radius:12px;border:1px solid #2a3764"/>
-          <h3>${t.title}</h3>
-          <p>${t.blurb}</p>
-          <button onclick="openTopic('${t.id}')">Open full notes →</button>
-        </div>
-      `).join('');
+      cardsEl.innerHTML = list.map(t=>{
+        return `
+          <div class="card" onclick="openTopic('${t.id}')">
+            <img src="${t.cover}" alt="${escapeHtml(t.title)}"/>
+            <h3>${escapeHtml(t.title)}</h3>
+            <p>${escapeHtml(t.blurb)}</p>
+            <button type="button" onclick="event.stopPropagation(); openTopic('${t.id}')">Open full notes →</button>
+          </div>
+        `;
+      }).join('');
     }
     renderCards();
 
-    // ---------- SEARCH ----------
+    // ---------- search ----------
     function doSearch(){
       const q = document.getElementById('q').value.trim().toLowerCase();
       if(!q){ renderCards(); return; }
-      const filtered = TOPICS.filter(t =>
-        t.title.toLowerCase().includes(q) || t.blurb.toLowerCase().includes(q) || t.id.includes(q)
-      );
+      const filtered = TOPICS.filter(t=> (t.title+t.blurb+t.id).toLowerCase().includes(q));
       renderCards(filtered);
     }
 
-    // ---------- PANEL OPEN/CLOSE ----------
+    // ---------- panel open/close ----------
     const panel = document.getElementById('panel');
-    const title = document.getElementById('title');
-    const content = document.getElementById('content');
+    const titleEl = document.getElementById('title');
+    const subtitleEl = document.getElementById('subtitle');
+    const contentEl = document.getElementById('content');
 
     function openTopic(id){
       const t = TOPICS.find(x=>x.id===id);
       if(!t) return;
-      title.textContent = t.title;
-      content.innerHTML = `
-        <div class="img-wrap" style="margin-top:6px">
-          <img src="${t.cover}" alt="${t.title} cover"/>
-        </div>
-        ${t.html}
-      `;
-      panel.classList.add('open');
-      panel.setAttribute('aria-hidden','false');
-      history.pushState({id}, "", "#"+id);  // deep-link
+      titleEl.textContent = t.title;
+      subtitleEl.textContent = t.blurb;
+      contentEl.innerHTML = <div class="img-wrap"><img src="${t.cover}" alt="${escapeHtml(t.title)}"/></div> + (t.html||'<p>No details.</p>');
+      panel.classList.add('open'); panel.setAttribute('aria-hidden','false');
+      try{ history.pushState({id}, "", "#"+id); }catch(e){}
     }
-    function closePanel(){
-      panel.classList.remove('open');
-      panel.setAttribute('aria-hidden','true');
-      history.pushState({}, "", "#");
-    }
-    panel.addEventListener('click',e=>{ if(e.target===panel) closePanel(); });
 
-    // Deep link support: https://site#maurya
-    window.addEventListener('load',()=>{
+    function closePanel(){
+      panel.classList.remove('open'); panel.setAttribute('aria-hidden','true');
+      try{ history.pushState({}, "", "#"); }catch(e){}
+    }
+
+    panel.addEventListener('click', e=>{ if(e.target===panel) closePanel(); });
+
+    // deep-link support
+    window.addEventListener('load', ()=>{
       const hash = location.hash?.replace('#','');
       if(hash){ openTopic(hash); }
     });
-    window.addEventListener('popstate',()=>{
+    window.addEventListener('popstate', ()=>{
       const hash = location.hash?.replace('#','');
-      if(hash){ openTopic(hash); } else { closePanel(); }
+      if(hash) openTopic(hash); else closePanel();
     });
+
+    // small html-escape helper
+    function escapeHtml(s){
+      return (s+'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
   </script>
 </body>
 </html>
